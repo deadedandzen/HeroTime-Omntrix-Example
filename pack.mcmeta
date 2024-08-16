@@ -1,0 +1,16 @@
+{
+  "pack": {
+    "id": "grave.ht",
+    "description": "example of how to impliment a custom omnitrix transformation",
+    "pack_format": 15,
+    "version": "1.0.0"
+  },
+  "dependencies": {
+    "common": {
+    },
+    "fabric": {
+    },
+    "forge": {
+    }
+  }
+}

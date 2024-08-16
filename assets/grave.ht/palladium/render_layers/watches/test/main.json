@@ -1,0 +1,50 @@
+{
+	"type": "palladium:compound",
+	"layers": [
+		{
+			"type": "geckolib:default",
+			"model": "grave.ht:geo/watches/test/normal.geo.json",
+			"texture": "grave.ht:textures/models/watches/test/active/watch.png",
+			"bones": {
+				"head": "armorHead",
+				"body": "armorBody",
+				"right_arm": "armorRightArm",
+				"left_arm": "armorLeftArm",
+				"right_leg": "armorRightLeg",
+				"left_leg": "armorLeftLeg"
+			},
+            "conditions":[
+                {
+                    "type": "palladium:not",
+                    "conditions": [
+                        {
+                            "type": "palladium:ability_enabled",
+                            "power": "grave.ht:test_omnitrix",
+                            "ability": "prime"
+                        }
+                    ]
+                }
+            ]
+		},
+		{
+			"type": "geckolib:default",
+			"model": "grave.ht:geo/watches/test/prime.geo.json",
+			"texture": "grave.ht:textures/models/watches/test/active/watch.png",
+			"bones": {
+				"head": "armorHead",
+				"body": "armorBody",
+				"right_arm": "armorRightArm",
+				"left_arm": "armorLeftArm",
+				"right_leg": "armorRightLeg",
+				"left_leg": "armorLeftLeg"
+			},
+            "conditions":[
+                {
+                    "type": "palladium:ability_enabled",
+                    "power": "grave.ht:test_omnitrix",
+                    "ability": "prime"
+                }
+            ]
+		}
+	]
+}

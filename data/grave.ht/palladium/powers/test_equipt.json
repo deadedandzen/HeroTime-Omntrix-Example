@@ -1,0 +1,52 @@
+{
+	"name": {"translate":"power.grave.ht.test.omnitrix.user"},
+	"background": "grave.ht:textures/gui/icons/bg.png",
+	"icon":{
+		"type": "palladium:texture",
+		"texture": "#grave.ht:proto/proto_codes"
+	},
+	"ability_bar_texture": "grave.ht:textures/gui/ability_bars/omni.png",
+	"abilities": {
+		"test_user_commands":{
+			"type": "palladium:command",
+			"hidden": true,
+			"hidden_in_bar": true,
+			"first_tick_commands": ["tag @s add grave.omnicode.addingfull"],
+			"last_tick_commands": ["",
+						"",
+						""],
+			"commands": ["",
+			""],
+			"conditions":{
+				"enabling":[
+					{
+						"type": "palladium:action",
+						"cooldown": 0,
+						"key_type": "right_click",
+						"needs_empty_hand": false,
+						"allow_scrolling_when_crouching": true
+					}
+				],
+				"unlocking":[
+				]
+			}
+		},
+		"recouple":{
+			"type": "gravestone:omnitrix_couple",
+			"hidden": true,
+			"hidden_in_bar": true,
+			"watch_name": "test",
+			"watch_type": "test",
+			"conditions":{
+				"enabling":[
+					{
+						"type": "palladium:has_tag",
+						"tag": "grave.omnicode.addingfull"
+					}
+				],
+				"unlocking":[
+				]
+			}
+		}
+	}
+}

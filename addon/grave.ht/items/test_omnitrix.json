@@ -1,0 +1,7 @@
+{
+    "type": "palladium:default",
+    "max_stack_size": 1,
+    "creative_mode_tab": "grave.ht:watches",
+    "rarity": "epic",
+    "is_fire_resistant": true
+}
