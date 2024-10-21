@@ -6,7 +6,7 @@
 		"texture": "#grave.ht:proto/proto_codes"
 	},
 	"persistent_data": true,
-	"ability_bar_texture": "grave.ht:textures/gui/ability_bars/omni.png",
+	"ability_bar_texture": "grave.ht:textures/gui/ability_bars/base.png",
 	"abilities": {
 		"test_commands":{
 			"type": "palladium:command",

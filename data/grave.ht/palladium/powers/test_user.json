@@ -5,7 +5,7 @@
 		"type": "palladium:texture",
 		"texture": "#grave.ht:proto/proto_codes"
 	},
-	"ability_bar_texture": "grave.ht:textures/gui/ability_bars/omni.png",
+	"ability_bar_texture": "grave.ht:textures/gui/ability_bars/base.png",
 	"abilities": {
 		"proto_user_commands":{
 			"type": "palladium:command",
