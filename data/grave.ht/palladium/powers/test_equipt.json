@@ -7,18 +7,19 @@
 	},
 	"ability_bar_texture": "grave.ht:textures/gui/ability_bars/base.png",
 	"abilities": {
-		"test_user_commands":{
-			"type": "palladium:command",
+		"recouple": {
+			"type": "graveht:omnitrix_coupling",
 			"hidden": true,
 			"hidden_in_bar": true,
-			"first_tick_commands": ["tag @s add grave.omnicode.addingfull"],
-			"last_tick_commands": ["",
-						"",
-						""],
-			"commands": ["",
-			""],
-			"conditions":{
-				"enabling":[
+			"watch_name": "test",
+			"watch_item": "grave.ht:test_omnitrix",
+			"score_save": [],
+			"score_data": [],
+			"default_uniform": 1,
+			"default_randomizer": 600,
+			"default_max_timer": 6000,
+			"conditions": {
+				"enabling": [
 					{
 						"type": "palladium:action",
 						"cooldown": 0,
@@ -27,24 +28,33 @@
 						"allow_scrolling_when_crouching": true
 					}
 				],
-				"unlocking":[
-				]
-			}
-		},
-		"recouple":{
-			"type": "gravestone:omnitrix_couple",
-			"hidden": true,
-			"hidden_in_bar": true,
-			"watch_name": "test",
-			"watch_type": "test",
-			"conditions":{
-				"enabling":[
+				"unlocking": [
 					{
-						"type": "palladium:has_tag",
-						"tag": "grave.omnicode.addingfull"
+						"type": "palladium:not",
+						"conditions": [
+							{
+								"type": "palladium:or",
+								"conditions": [
+									{
+										"type": "palladium:has_tag",
+										"tag": "grave.omni.has"
+									},
+									{
+										"type": "palladium:has_tag",
+										"tag": "grave.omni.user"
+									},
+									{
+										"type": "palladium:has_tag",
+										"tag": "grave.omni.deny"
+									},
+									{
+										"type": "palladium:has_tag",
+										"tag": "AlienEvo.Unworthy"
+									}
+								]
+							}
+						]
 					}
-				],
-				"unlocking":[
 				]
 			}
 		}

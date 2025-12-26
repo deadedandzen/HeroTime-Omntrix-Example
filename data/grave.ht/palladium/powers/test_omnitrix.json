@@ -11,73 +11,19 @@
 		"test_commands":{
 			"type": "palladium:command",
 			"hidden": true,
-			"first_tick_commands": ["",
-			"function grave.ht:omnitrix/scoreboard_maker",
-			"scoreboard players add @s grave.omni.colour 0",
-			"scoreboard objectives add grave.omni.aliensave dummy",
-			"tag @s remove grave.omnicode.addingfull",
-			"gamerule commandBlockOutput false"],
-			"last_tick_commands": ["tag @s remove grave.omni.has",
-							"tag @s remove grave.omni.code.decouple"],
+			"first_tick_commands": [
+				"",
+				"function grave.ht:omnitrix/scoreboard_maker",
+				"gamerule commandBlockOutput false"
+			],
+			"last_tick_commands": [
+				"tag @s remove grave.omni.has",
+				"tag @s remove grave.omni.code.decouple"
+			],
 			"commands": [
-				"execute if score @s grave.ORecharge matches 2.. run scoreboard players remove @s grave.ORecharge 1",
 				"scale easing set palladium:ability pehkui:exponential_out",
-				
-				"execute store result score @s grave.omni.health_max run attribute @s minecraft:generic.max_health get"
+				""
 			]
-		},
-        "decouple":{
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "Decouple",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 4,
-            "gui_position": "null",
-            "description": "null",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "tag @s add grave.omnicode.decouple"
-            ],
-			"conditions":{
-				"enabling":[
-					{
-						"type": "palladium:action",
-						"cooldown": 0,
-						"key_type": "key_bind",
-						"needs_empty_hand": false,
-						"allow_scrolling_when_crouching": true
-					}
-				],
-				"unlocking":[
-				]
-			}
-        },
-		"decouple_script":{
-			"type": "gravestone:omnitrix_decouple",
-			"hidden": true,
-			"hidden_in_bar": true,
-			"watch_name": "test",
-			"watch_type": "test",
-			"conditions":{
-				"enabling":[
-					{
-						"type": "palladium:or",
-						"conditions": [{
-							"type": "palladium:has_tag",
-							"tag": "grave.omnicode.decouple"
-						}]
-					},
-					{
-						"type": "palladium:empty_slot",
-						"slot": "mainhand"
-					}
-				],
-				"unlocking":[
-				]
-			}
 		},
 		"render_layer":{
             "type": "palladium:render_layer",
@@ -110,6 +56,9 @@
 					}
 				],
 				"unlocking":[
+					{
+						"type": "graveht:omnitrix_timed_in"
+					}
 				]
 			}
         },
@@ -135,14 +84,10 @@
 			}
         },
 		"cycle_r":{
-			"type": "palladium:command",
+			"type": "graveht:omnitrix_cycle",
 			"hidden": true,
     		"hidden_in_bar": true,
-			"first_tick_commands": [""],
-			"commands": [
-				"tag @s add grave.omni.cycle.r"
-            ],
-			"last_tick_commands": ["tag @s remove grave.omni.cycle.r"],
+			"l_or_r": true,
 			"conditions":{
 				"enabling":[
 					{
@@ -161,92 +106,11 @@
 				]
 			}
 		},
-		"cycle_script":{
-			"type": "gravestone:omnitrix_cycle_right",
-			"hidden": true,
-			"hidden_in_bar": true,
-			"omni_cycle": "grave.OCycle",
-			"omni_select": "grave.OSelect",
-			"omni_playlist": "grave.OPlaylist",
-			"omni_cyclingr": "grave.omni.cycle.r",
-			"omni_cyclingl": "grave.omni.cycle.l",
-			"conditions":{
-				"enabling":[
-					{
-						"type": "palladium:or",
-						"conditions": [
-                            {
-                                "type": "palladium:and",
-                                "conditions": [
-                                    {
-                                        "type": "palladium:has_tag",
-                                        "tag": "grave.omni.cycle.r"
-                                    },
-                                    {
-                                        "type": "palladium:ability_enabled",
-                                        "ability": "cycle_r"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "palladium:and",
-                                "conditions": [
-                                    {
-                                        "type": "palladium:has_tag",
-                                        "tag": "grave.omni.cycle.l"
-                                    },
-                                    {
-                                        "type": "palladium:ability_enabled",
-                                        "ability": "cycle_l"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "palladium:and",
-                                "conditions": [
-                                    {
-                                        "type": "palladium:has_tag",
-                                        "tag": "grave.omni.cycle.l"
-                                    },
-                                    {
-                                        "type": "palladium:not",
-                                        "conditions": [{
-                                            "type": "palladium:ability_enabled",
-                                            "ability": "cycle_l"
-                                        }]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "palladium:and",
-                                "conditions": [
-                                    {
-                                        "type": "palladium:has_tag",
-                                        "tag": "grave.omni.cycle.r"
-                                    },
-                                    {
-                                        "type": "palladium:not",
-                                        "conditions": [{
-                                            "type": "palladium:ability_enabled",
-                                            "ability": "cycle_r"
-                                        }]
-                                    }
-                                ]
-                            }
-                        ]
-					}
-				],
-				"unlocking":[
-				]
-			}
-		},
 		"cycle_l":{
-			"type": "palladium:command",
+			"type": "graveht:omnitrix_cycle",
 			"hidden": true,
     		"hidden_in_bar": true,
-			"first_tick_commands": [],
-			"commands": ["tag @s add grave.omni.cycle.l"],
-			"last_tick_commands": ["tag @s remove grave.omni.cycle.l"],
+			"l_or_r": false,
 			"conditions":{
 				"enabling":[
 					{
@@ -266,7 +130,7 @@
 			}
 		},
 		"transform":{
-			"type": "gravestone:omnitrix_transform",
+			"type": "graveht:omnitrix_transform",
 			"icon": {
 				"type": "palladium:compound",
 				"icons": [
@@ -281,8 +145,8 @@
 			"list_index": 3,
 			"gui_position": "null",
 			"description": "null",
-			"omni_cycle": "grave.OCycle",
 			"watch_name": "test",
+			"health_seperate": true,
 			"conditions":{
 				"enabling":[
 					{
@@ -303,7 +167,8 @@
 			}
 		},
 		"p_cycle_r":{
-			"type": "palladium:command",
+			"type": "graveht:omnitrix_cycle_playlist",
+			"l_or_r": true,
 			"icon": {
 				"type": "palladium:compound",
 				"icons": [
@@ -316,7 +181,6 @@
 			"hidden": true,
     		"hidden_in_bar": false,
 			"list_index": 1,
-			"commands": ["tag @s add grave.omni.cycle.rp"],
 			"conditions":{
 				"enabling":[
 					{
@@ -341,7 +205,8 @@
 			}
 		},
 		"p_cycle_l":{
-			"type": "palladium:command",
+			"type": "graveht:omnitrix_cycle_playlist",
+			"l_or_r": true,
 			"icon": {
 				"type": "palladium:compound",
 				"icons": [
@@ -354,7 +219,6 @@
 			"hidden": true,
     		"hidden_in_bar": false,
 			"list_index": 1,
-			"commands": ["tag @s add grave.omni.cycle.lp"],
 			"conditions":{
 				"enabling":[
 					{
@@ -376,35 +240,102 @@
 				]
 			}
 		},
-		"p_cycle_script":{
-			"type": "gravestone:omnitrix_cycle_playlists",
+		"decouple_cheat": {
+			"type": "graveht:omnitrix_decoupling",
+			"hidden": true,
+			"watch_name": "test",
+			"watch_item": "grave.ht:test_omnitrix",
+			"conditions": {
+				"enabling": [
+					{
+						"type": "palladium:chat_action",
+						"chat_message": "joe",
+						"cooldown": 0
+					}
+				]
+			}
+		},
+	  	"OmniTimer": {
+		  	"type": "graveht:omnitrix_timer",
+		  	"hidden": true,
+		  	"debug_mode": true,
+		  	"is_user": false,
+			"timer_multiplier": 3
+		},
+		"has_mc": {
+			"type": "graveht:omnitrix_master_control",
+			"hidden": true,
+			"set_to": true,
+			"conditions": {
+				"enabling": [
+					{
+						"type": "palladium:has_tag",
+						"tag": "grave.omni.MC"
+					}
+				]
+			}
+		},
+		"dont_has_mc": {
+			"type": "graveht:omnitrix_master_control",
+			"hidden": true,
+			"set_to": false,
+			"conditions": {
+				"enabling": [
+					{
+						"type": "palladium:not",
+						"conditions": [
+							{
+								"type": "palladium:has_tag",
+								"tag": "grave.omni.MC"
+							}
+						]
+					}
+				]
+			}
+		},
+		"playlist_scramble": {
+			"type": "graveht:omnitrix_playlist_set",
+			"hidden": true,
+			"fallback_playlist": [1,2,3,4,5,6,7,8,9,10],
+			"conditions": {
+				"enabling": [
+					{
+						"type": "palladium:has_tag",
+						"tag": "grave.omni.playlist_scramble"
+					}
+				]
+			}
+		},
+		"playlist_scramble_check": {
+			"type": "palladium:animation_timer",
+			"start_value": 0,
+			"max_value": 2,
+			"conditions": {
+				"enabling": [
+					{
+						"type": "palladium:has_tag",
+						"tag": "grave.omni.playlist_scramble"
+					}
+				]
+			}
+		},
+		"playlist_scramble_tag": {
+			"type": "palladium:command",
 			"hidden": true,
 			"hidden_in_bar": true,
-			"omni_cycle": "grave.OCycle",
-			"omni_select": "grave.OSelect",
-			"omni_playlist": "grave.OPlaylist",
-			"omni_cyclingr": "grave.omni.cycle.rp",
-			"omni_cyclingl": "grave.omni.cycle.lp",
-			"conditions":{
-				"enabling":[
+			"commands": [
+				"tag @s remove grave.omni.playlist_scramble"
+			],
+			"conditions": {
+				"enabling": [
 					{
-						"type": "palladium:or",
-						"conditions": [
-                            {
-                                "type": "palladium:ability_enabled",
-                                "ability": "p_cycle_r"
-                            },
-                            {
-                                "type": "palladium:ability_enabled",
-                                "ability": "p_cycle_l"
-                            }
-                        ]
+						"type": "palladium:animation_timer_ability",
+						"ability": "playlist_scramble_check",
+						"min": 2,
+						"max": 2
 					}
-				],
-				"unlocking":[
 				]
 			}
 		}
-
 	}
 }
